@@ -1,0 +1,58 @@
+# Vercel Web Analytics Installation
+
+Successfully installed and configured Vercel Web Analytics for this Express.js project.
+
+## Changes Made
+
+### 1. Installed @vercel/analytics Package
+- Added `@vercel/analytics` version 2.0.1 to dependencies
+- Updated package.json and package-lock.json
+
+### 2. Configured Analytics in HTML
+- Modified `public/index.html` to include Vercel Web Analytics script
+- Added the analytics initialization script in the `<head>` section
+- Used the vanilla JavaScript/HTML implementation method as per official Vercel documentation
+
+### Implementation Details
+
+Following the official Vercel Analytics quickstart guide (https://vercel.com/docs/analytics/quickstart), I implemented the vanilla JavaScript approach suitable for this Express.js static site:
+
+1. **Script Injection**: Added two script tags before the closing `</head>` tag:
+   - Initialization script that sets up `window.va` function
+   - Deferred loading of the analytics script from `/_vercel/insights/script.js`
+
+2. **Framework Choice**: Since this is an Express.js backend serving static HTML files (not a React/Next.js/Vue application), the vanilla JavaScript implementation was the appropriate choice.
+
+3. **Integration Method**: Used the recommended script tag approach for HTML/JavaScript projects, which:
+   - Requires no build process
+   - Works with static file serving
+   - Automatically tracks page views when deployed to Vercel
+   - Provides the `window.va()` API for custom event tracking if needed
+
+## Files Modified
+
+- `package.json` - Added @vercel/analytics dependency
+- `package-lock.json` - Updated with new package and dependencies (70 packages added)
+- `public/index.html` - Added Vercel Analytics scripts to the head section
+
+## Testing
+
+- Verified package installation: `@vercel/analytics@2.0.1` installed successfully
+- Confirmed Node.js syntax validation passes
+- Verified HTML structure remains valid with analytics scripts added
+- No linter configured in project, so no linting errors to check
+
+## Next Steps
+
+To complete the setup:
+1. Deploy this application to Vercel
+2. Enable Web Analytics in the Vercel dashboard for this project
+3. After deployment, verify tracking is working by checking the browser Network tab for requests to `/_vercel/insights/view`
+4. View analytics data in the Vercel dashboard under the Analytics section
+
+## Notes
+
+- The analytics will only function when deployed to Vercel
+- Local development will not send analytics data
+- The implementation follows Vercel's official documentation for vanilla JavaScript projects
+- No additional configuration is needed in the Express.js server code
